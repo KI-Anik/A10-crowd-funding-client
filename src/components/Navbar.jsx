@@ -3,10 +3,10 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
-        <li><NavLink to={'allCamp'}>All Campaign</NavLink></li>
-        <li><NavLink to={'addNewCamp'}>Add New Campaign</NavLink></li>
-        <li><NavLink to={'myCamp'}>My Campaign</NavLink></li>
-        <li><NavLink to={'myDonation'}>My Donations</NavLink></li>
+        <li><NavLink to={'/allCamp'}>All Campaign</NavLink></li>
+        <li><NavLink to={'/auth/addNewCamp'}>Add New Campaign</NavLink></li>
+        <li><NavLink to={'/auth/myCamp'}>My Campaign</NavLink></li>
+        <li><NavLink to={'/auth/myDonation'}>My Donations</NavLink></li>
     </>
     return (
         <div className="navbar flex-col sm:flex-row bg-base-100 shadow-sm m-5 mx-auto">

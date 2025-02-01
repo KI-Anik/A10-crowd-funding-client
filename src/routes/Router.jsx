@@ -8,6 +8,9 @@ import AuthLayout from "../components/layout/AuthLayout";
 import Login from "../components/pages/Login";
 import Register from "../components/pages/Register";
 import AddNewCamp from "../components/pages/AddNewCamp";
+import MyCamp from "../components/pages/MyCamp";
+import AllCamp from "../components/pages/AllCamp";
+import MyDonation from "../components/pages/MyDonation";
 
 const Router = createBrowserRouter([
   {
@@ -19,7 +22,10 @@ const Router = createBrowserRouter([
         path: '/',
         element: <Home></Home>
       },
-
+      {
+        path: 'allCamp',
+        element: <AllCamp></AllCamp>
+      },
 
     ]
   },
@@ -39,6 +45,14 @@ const Router = createBrowserRouter([
         path: '/auth/addNewCamp',
         element: <AddNewCamp></AddNewCamp>
       },
+      {
+        path: '/auth/myCamp',
+        element: <MyCamp></MyCamp>
+      },
+      {
+        path: '/auth/myDonation',
+        element: <MyDonation></MyDonation>
+      }
     ]
   }
 ])

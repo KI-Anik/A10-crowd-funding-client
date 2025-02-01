@@ -7,7 +7,9 @@ li > a {
     
 }
 .active{
-    background-color: aquamarine;
+    background-color: rgb(28, 134, 90);
+    color: white;
+    font-weight: 700;
 }
 
 /* banner css start  */
