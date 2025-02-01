@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@import "tailwindcss";
+@plugin "daisyui";
+
+li > a {
+    font-weight: 500;
+    font-size: medium;
+    
+}
+a.active{
+    background-color: aquamarine;
+}
