@@ -10,23 +10,33 @@ import banner2 from '../../assets/crowdfunding-for-events.jpg';
 import banner3 from '../../assets/Crowdfunding-Guide.png';
 
 const Home = () => {
-  return (
-    <div>
-      <Swiper
-        className="swiper-pagination-bullet-active"
-        spaceBetween={50}
-        slidesPerView={1}
-        navigation={true} // Enables left and right arrows
-        pagination={{ clickable: true }} // Enables pagination dots
-        autoplay={{ delay: 3000, disableOnInteraction: false }} // Auto-swipe
-        modules={[Navigation, Pagination, Autoplay]}
-      >
-        <SwiperSlide><img src={banner1} alt="Banner 1" /></SwiperSlide>
-        <SwiperSlide><img src={banner2} alt="Banner 2" /></SwiperSlide>
-        <SwiperSlide><img src={banner3} alt="Banner 3" /></SwiperSlide>
-      </Swiper>
-    </div>
-  );
+    return (
+
+        <div>
+            <section>
+                <Swiper
+                    className="swiper-pagination-bullet-active"
+                    spaceBetween={50}
+                    slidesPerView={1}
+                    navigation={true} // Enables left and right arrows
+                    pagination={{ clickable: true }} // Enables pagination dots
+                    autoplay={{ delay: 3000, disableOnInteraction: false }} // Auto-swipe
+                    modules={[Navigation, Pagination, Autoplay]}
+                >
+                    <SwiperSlide><img src={banner1} alt="Banner 1" /></SwiperSlide>
+                    <SwiperSlide><img src={banner2} alt="Banner 2" /></SwiperSlide>
+                    <SwiperSlide><img src={banner3} alt="Banner 3" /></SwiperSlide>
+                </Swiper>
+            </section>
+
+            {/* running campaign section start */}
+            <section>
+
+            </section>
+            {/* running campaign section end */}
+
+        </div>
+    );
 };
 
 export default Home;

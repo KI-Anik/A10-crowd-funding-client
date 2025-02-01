@@ -42,7 +42,7 @@ const Footer = () => {
       </Link>
     </div>
   </nav>
-    <p>Copyright © {new Date().getFullYear()} - All right reserved by BDCOT</p>
+    <p>Copyright © {new Date().getFullYear()} - All right reserved by Crowd Funding</p>
 </footer>
         </div>
     );

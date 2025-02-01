@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const links = <>
@@ -9,10 +9,10 @@ const Navbar = () => {
     <li><NavLink to={'/myDonation'}>My Donations</NavLink></li>
     </>
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar flex-col sm:flex-row bg-base-100 shadow-sm m-5 mx-auto">
             <div className="navbar-start">
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
+                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
                     </div>
                     <ul
@@ -23,14 +23,14 @@ const Navbar = () => {
                 </div>
                 <a className="btn btn-ghost text-xl">Crowd Funding</a>
             </div>
-            <div className="navbar-center hidden md:flex">
+            <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {links}
                 </ul>
             </div>
             <div className="navbar-end gap-4">
-                <a className="btn">Log in</a>
-                <a className="btn">Register</a>
+                <button><Link to={'/auth/login'} className="btn">Log in</Link></button>
+                <button><Link to={'/auth/register'} className="btn">Register</Link></button>
             </div>
         </div>
     );
