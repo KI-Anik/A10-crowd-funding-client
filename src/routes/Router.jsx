@@ -7,6 +7,7 @@ import Home from "../components/pages/Home";
 import AuthLayout from "../components/layout/AuthLayout";
 import Login from "../components/pages/Login";
 import Register from "../components/pages/Register";
+import AddNewCamp from "../components/pages/AddNewCamp";
 
 const Router = createBrowserRouter([
   {
@@ -18,6 +19,8 @@ const Router = createBrowserRouter([
         path: '/',
         element: <Home></Home>
       },
+
+
     ]
   },
   {
@@ -31,7 +34,11 @@ const Router = createBrowserRouter([
       {
         path: '/auth/register',
         element: <Register></Register>
-      }
+      },
+      {
+        path: '/auth/addNewCamp',
+        element: <AddNewCamp></AddNewCamp>
+      },
     ]
   }
 ])

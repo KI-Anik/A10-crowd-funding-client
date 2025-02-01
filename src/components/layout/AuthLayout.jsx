@@ -4,9 +4,9 @@ import { Outlet } from 'react-router-dom';
 
 const AuthLayout = () => {
     return (
-        <div className='container mx-auto flex flex-col min-h-screen '>
+        <div className='container mx-auto  '>
             <Navbar></Navbar>
-            <div className="flex-1 flex items-center justify-center bg-base-200">
+            <div className="min-h-[calc(100vh-308px)] pt-4 pb-5 bg-base-200">
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>

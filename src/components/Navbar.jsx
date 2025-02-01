@@ -2,11 +2,11 @@ import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const links = <>
-    <li><NavLink to={'/'}>Home</NavLink></li>
-    <li><NavLink to={'/AllCamp'}>All Campaign</NavLink></li>
-    <li><NavLink to={'/addNewCamp'}>Add New Campaign</NavLink></li>
-    <li><NavLink to={'/myCamp'}>My Campaign</NavLink></li>
-    <li><NavLink to={'/myDonation'}>My Donations</NavLink></li>
+        <li><NavLink to={'/'}>Home</NavLink></li>
+        <li><NavLink to={'allCamp'}>All Campaign</NavLink></li>
+        <li><NavLink to={'addNewCamp'}>Add New Campaign</NavLink></li>
+        <li><NavLink to={'myCamp'}>My Campaign</NavLink></li>
+        <li><NavLink to={'myDonation'}>My Donations</NavLink></li>
     </>
     return (
         <div className="navbar flex-col sm:flex-row bg-base-100 shadow-sm m-5 mx-auto">
@@ -18,7 +18,7 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-md dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                       {links}
+                        {links}
                     </ul>
                 </div>
                 <a className="btn btn-ghost text-xl">Crowd Funding</a>
