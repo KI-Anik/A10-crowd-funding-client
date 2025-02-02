@@ -11,6 +11,7 @@ import AddNewCamp from "../components/pages/AddNewCamp";
 import MyCamp from "../components/pages/MyCamp";
 import AllCamp from "../components/pages/AllCamp";
 import MyDonation from "../components/pages/MyDonation";
+import PrivateRouter from "./PrivateRouter";
 
 const Router = createBrowserRouter([
   {
@@ -43,7 +44,9 @@ const Router = createBrowserRouter([
       },
       {
         path: '/auth/addNewCamp',
-        element: <AddNewCamp></AddNewCamp>
+        element: <PrivateRouter>
+          <AddNewCamp></AddNewCamp>
+        </PrivateRouter>,
       },
       {
         path: '/auth/myCamp',

@@ -1,12 +1,25 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "./provider/AuthProvider";
+import Loading from "./Loading";
 
 const Navbar = () => {
+    const { user, logOut, loading } = useContext(AuthContext)
+
+    if(loading){
+        return <Loading></Loading>
+    }
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/allCamp'}>All Campaign</NavLink></li>
         <li><NavLink to={'/auth/addNewCamp'}>Add New Campaign</NavLink></li>
-        <li><NavLink to={'/auth/myCamp'}>My Campaign</NavLink></li>
-        <li><NavLink to={'/auth/myDonation'}>My Donations</NavLink></li>
+        {
+            user && <>
+                <li><NavLink to={'/auth/myCamp'}>My Campaign</NavLink></li>
+                <li><NavLink to={'/auth/myDonation'}>My Donations</NavLink></li>
+            </>
+        }
+
     </>
     return (
         <div className="navbar flex-col sm:flex-row bg-base-100 shadow-sm m-5 mx-auto">
@@ -29,8 +42,18 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-4">
-                <button><Link to={'/auth/login'} className="btn">Log in</Link></button>
-                <button><Link to={'/auth/register'} className="btn">Register</Link></button>
+                {
+                    user && user?.email ?
+                        <>
+                            <p> {user?.email}</p>
+                            <button onClick={logOut} className="btn">Log Out</button>
+                        </>
+                        : <>
+                            <button><Link to={'/auth/login'} className="btn">Log in</Link></button>
+                            <button><Link to={'/auth/register'} className="btn">Register</Link></button>
+                        </>
+                }
+
             </div>
         </div>
     );

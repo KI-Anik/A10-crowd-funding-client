@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Register = () => {
+    const {createNewUser,} = useContext(AuthContext)
+
     const handleRegister = e => {
         e.preventDefault()
         const form = e.target;
@@ -9,6 +14,15 @@ const Register = () => {
         const email = form.email.value
         const password = form.password.value
         console.log(name, photo, email, password)
+
+        createNewUser(email,password)
+        .then(result =>{
+            console.log(result.user)
+            toast.success('Registration successful')
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
     }
     return (
         <div className="hero">
@@ -31,7 +45,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Photo-URL</span>
                             </label>
-                            <input name="photo" type="url" placeholder="Provide your photo link" className="input input-bordered" required />
+                            <input name="photo" type="url" placeholder="Provide your profile photo link" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">

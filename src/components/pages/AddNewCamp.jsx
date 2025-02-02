@@ -1,5 +1,9 @@
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const AddCampaign = () => {
+    const { user } = useContext(AuthContext)
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -97,31 +101,27 @@ const AddCampaign = () => {
 
                 <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700" htmlFor="title">
-                        User Name
+                        User Email 
                     </label>
                     <input
-                        // defaultValue={user?.email}
+                        defaultValue={user?.email}
 
-                        type="text"
                         id="name"
                         name="name"
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-                        required
-                        placeholder="Enter Campaign title"
+                        readOnly
                     />
                 </div>
                 <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700" htmlFor="title">
-                        User Email
+                        User Name or createrd time (checking)
                     </label>
                     <input
-                        // defaultValue={user?.displayName}
-                        type="email"
-                        id="email"
-                        name="email"
+                        defaultValue={user?.metadata?.creationTime}
+                        id="name"
+                        name="name"
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-                        required
-                        placeholder="Enter Campaign title"
+                        readOnly
                     />
                 </div>
                 <button

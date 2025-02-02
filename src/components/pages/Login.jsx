@@ -1,12 +1,27 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
+    const {login} =useContext(AuthContext)
+
     const handleLogin = e => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value
         const password = form.password.value
         console.log(email, password)
+
+        // authentication
+        login(email,password)
+        .then(result=>{
+            console.log(result.user)
+            toast.success('welcome ')
+        })
+        .catch(err =>{
+            console.log(err.message)
+        })
     }
     return (
         <div className="hero">
