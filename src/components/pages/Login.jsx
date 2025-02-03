@@ -29,6 +29,7 @@ const Login = () => {
     const handleGoogle = () => {
         loginWithGoogle()
             .then(result => {
+                console.log(result.user)
                 setUser(result.user)
                 toast.success(`welcome ${ result.user?.displayName? result.user.displayName : ''} to Crowd Funding`)
             })

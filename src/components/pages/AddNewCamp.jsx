@@ -13,7 +13,32 @@ const AddCampaign = () => {
         const amount = form.amount.value;
         const date = form.date.value;
         const image = form.image.value;
-        console.log(title, description, type, amount, image, date)
+
+        console.log('form', title, description, type, amount, image, date)
+
+        // process data for sending to DB
+        const finalData ={
+            title: title,
+            description: description,
+            type:type,
+            amount:amount,
+            date:date,
+            image:image,
+        };
+        console.log(finalData)
+
+        fetch('http://localhost:4000/campaigns',{
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(finalData)
+        })
+        .then(res =>res.json())
+        .then(data =>{
+            console.log('server', data)
+        })
+
     }
     return (
         <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md ">
@@ -114,10 +139,10 @@ const AddCampaign = () => {
                 </div>
                 <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700" htmlFor="title">
-                        User Name or createrd time (checking)
+                        User Name
                     </label>
                     <input
-                        defaultValue={user?.metadata?.creationTime}
+                        defaultValue={user?.displayName}
                         id="name"
                         name="name"
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
