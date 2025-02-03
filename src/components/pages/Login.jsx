@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-    const {login} =useContext(AuthContext)
+    const { login, loginWithGoogle, setUser, } = useContext(AuthContext)
 
     const handleLogin = e => {
         e.preventDefault()
@@ -13,15 +14,27 @@ const Login = () => {
         const password = form.password.value
         console.log(email, password)
 
-        // authentication
-        login(email,password)
-        .then(result=>{
-            console.log(result.user)
-            toast.success('welcome ')
-        })
-        .catch(err =>{
-            console.log(err.message)
-        })
+        // authentication start
+        login(email, password)
+            .then(result => {
+                console.log(result.user)
+                setUser(result.user)
+                toast.success(`welcome ${ result.user?.displayName? result.user.displayName : ''} to Crowd Funding`)
+            })
+            .catch(err => {
+                toast.error(err.message)
+            })
+    }
+
+    const handleGoogle = () => {
+        loginWithGoogle()
+            .then(result => {
+                setUser(result.user)
+                toast.success(`welcome ${ result.user?.displayName? result.user.displayName : ''} to Crowd Funding`)
+            })
+            .catch(err => {
+                toast.error(err.message)
+            })
     }
     return (
         <div className="hero">
@@ -32,8 +45,12 @@ const Login = () => {
                         Log in to Crowd Funding to continue.
                     </p>
                 </div>
-                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                    <form onSubmit={handleLogin} className="card-body">
+                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl card-body">
+                        <button onClick={handleGoogle} className="btn"> <FaGoogle></FaGoogle> Contionue with Google</button>
+                        <div className="text-xl font-bold text-center">
+                            Or
+                        </div>
+                    <form onSubmit={handleLogin}>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>

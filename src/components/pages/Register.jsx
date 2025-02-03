@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate,  } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
+import { FaGoogle } from "react-icons/fa";
 
 const Register = () => {
-    const {createNewUser,} = useContext(AuthContext)
+    const { createNewUser, loginWithGoogle, setUser, updateUserProfile } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleRegister = e => {
         e.preventDefault()
@@ -15,15 +17,48 @@ const Register = () => {
         const password = form.password.value
         console.log(name, photo, email, password)
 
-        createNewUser(email,password)
-        .then(result =>{
-            console.log(result.user)
-            toast.success('Registration successful')
-        })
-        .catch(err => {
-            console.log(err.message)
-        })
+        // password conditional check
+        // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/
+        // if (!passwordRegex.test(password)) {
+        //   toast.error('password should be at least one uppercase, one lowercase and 6 character long')
+        //   return
+        // }
+
+        // authentication start
+        createNewUser(email, password)
+            .then(result => {
+                console.log(result.user)
+
+                // profile start
+                updateUserProfile({displayName: name, photoURL: photo })
+                    .then(() => {
+                        navigate('/')
+                        toast.success('Account created successfully')
+                    })
+                    .catch(err => {
+                        console.log('from update', err.message)
+                    })
+                    // profile end
+            })
+
+            .catch(err => {
+                console.log('handleRegister', err.message)
+            })
+        // authentication end
     }
+
+    const handleGoogle = () => {
+        loginWithGoogle()
+            .then(result => {
+                setUser(result.user)
+                console.log(result.user)
+            })
+            .catch(err => {
+                toast.error(err.message)
+            })
+    }
+    // authentication end
+
     return (
         <div className="hero">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -33,8 +68,12 @@ const Register = () => {
                         Meet people and life-changing teachers in need of your support
                     </p>
                 </div>
-                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                    <form onSubmit={handleRegister} className="card-body">
+                <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl card-body">
+                        <button onClick={handleGoogle} className="btn "> <FaGoogle></FaGoogle> Contionue with Google</button>
+                        <div className="text-xl font-bold text-center">
+                            Or
+                        </div>
+                    <form onSubmit={handleRegister}>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
@@ -63,7 +102,9 @@ const Register = () => {
                             <button className="btn btn-primary">Register</button>
                         </div>
                     </form>
-                    <p className="text-center pb-5 font-semibold">Already have an account? <Link to={'/auth/login'} className="text-blue-600 underline">Login</Link></p>
+                    <p className="text-center pb-5 font-semibold">
+                        Already have an account? <Link to={'/auth/login'} className="text-blue-600 underline">Login</Link>
+                    </p>
                 </div>
             </div>
         </div>

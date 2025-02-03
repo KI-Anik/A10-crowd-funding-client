@@ -2,11 +2,12 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "./provider/AuthProvider";
 import Loading from "./Loading";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
     const { user, logOut, loading } = useContext(AuthContext)
 
-    if(loading){
+    if (loading) {
         return <Loading></Loading>
     }
     const links = <>
@@ -45,7 +46,12 @@ const Navbar = () => {
                 {
                     user && user?.email ?
                         <>
-                            <p> {user?.email}</p>
+                            <p className="photoId cursor-pointer w-10">
+                                <Tooltip anchorSelect=".photoId" place="left">
+                                    {user?.displayName}
+                                </Tooltip>
+                                <img src={user?.photoURL} alt="profile photo" className="rounded-full " />
+                            </p>
                             <button onClick={logOut} className="btn">Log Out</button>
                         </>
                         : <>

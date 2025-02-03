@@ -1,10 +1,10 @@
-/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable react-refresh/only-export-components */
 import {
     createUserWithEmailAndPassword, GoogleAuthProvider,
     onAuthStateChanged, signInWithEmailAndPassword,
-    signInWithPopup, signOut
+    signInWithPopup, signOut,
+    updateProfile
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.init";
@@ -28,6 +28,10 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
+    const updateUserProfile = updateData => {
+        return updateProfile(auth.currentUser, updateData)
+    }
+
     const logOut = () => {
         return signOut(auth)
     }
@@ -39,6 +43,7 @@ const AuthProvider = ({ children }) => {
         createNewUser,
         loginWithGoogle,
         login,
+        updateUserProfile,
         logOut,
     }
     // set an observer for logged in user
