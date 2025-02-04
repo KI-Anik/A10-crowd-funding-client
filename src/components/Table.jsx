@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 
+import { Link } from "react-router-dom";
+
 const Table = ({ SingleCampData, idx }) => {
-    const { title, type, amount, date, image } = SingleCampData;
+    const {_id, title, type, amount, date, image } = SingleCampData;
     return (
         <>
             <tr >
@@ -15,9 +17,15 @@ const Table = ({ SingleCampData, idx }) => {
                 <td><div className="font-bold">{title}</div></td>
                 <td><div className="font-bold">{type}</div></td>
                 <td><div className="font-bold"> ${amount}</div></td>
-                <td><div className="font-bold text-red-500">{date}</div></td>
+                <td>
+                <div className="badge badge-secondary">
+                                        {
+                                            new Date(date) >= new Date() ? 'Ongoing' : 'End'
+                                        }
+                                    </div>
+                </td>
                 <th>
-                    <button className="btn btn-accent btn-md">See More</button>
+                    <Link to={`/auth/details/${_id}`} className="btn btn-accent btn-md">See More</Link>
                 </th>
             </tr>
         </>

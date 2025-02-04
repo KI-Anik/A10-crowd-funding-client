@@ -12,6 +12,7 @@ import MyCamp from "../components/pages/MyCamp";
 import AllCamp from "../components/pages/AllCamp";
 import MyDonation from "../components/pages/MyDonation";
 import PrivateRouter from "./PrivateRouter";
+import Details from "../components/pages/Details";
 
 const Router = createBrowserRouter([
   {
@@ -57,6 +58,11 @@ const Router = createBrowserRouter([
       {
         path: '/auth/myDonation',
         element: <MyDonation></MyDonation>
+      },
+      {
+        path: '/auth/details/:id',
+        element: <Details></Details>,
+        loader: ({params})=> fetch(`http://localhost:4000/campaigns/${params.id}`)
       }
     ]
   }

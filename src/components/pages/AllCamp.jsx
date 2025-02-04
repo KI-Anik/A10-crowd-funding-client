@@ -16,7 +16,7 @@ const AllCamp = () => {
                         <th>Title</th>
                         <th>Type</th>
                         <th>Min Donation</th>
-                        <th>Deadline</th>
+                        <th>Status</th>
                         <th>Details</th>
                     </tr>
                 </thead>
