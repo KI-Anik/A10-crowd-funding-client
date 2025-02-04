@@ -36,7 +36,7 @@ const AddCampaign = () => {
         })
         .then(res =>res.json())
         .then(data =>{
-            console.log('server', data)
+            alert('server', data)
         })
 
     }

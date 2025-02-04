@@ -21,11 +21,13 @@ const Router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader: ()=>fetch('http://localhost:4000/campaigns')
       },
       {
         path: 'allCamp',
-        element: <AllCamp></AllCamp>
+        element: <AllCamp></AllCamp>,
+        loader: ()=>fetch('http://localhost:4000/campaigns')
       },
 
     ]

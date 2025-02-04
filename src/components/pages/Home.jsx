@@ -8,8 +8,10 @@ import 'swiper/css/pagination';
 import banner1 from '../../assets/crowdfunding-donations.jpg';
 import banner2 from '../../assets/crowdfunding-for-events.jpg';
 import banner3 from '../../assets/Crowdfunding-Guide.png';
+import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
+    const allData = useLoaderData()
     return (
 
         <div>
@@ -30,8 +32,35 @@ const Home = () => {
             </section>
 
             {/* running campaign section start */}
-            <section>
-
+            <section className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 my-8'>
+                {
+                    allData.map(data =>
+                        <div key={data._id} className="card bg-base-100 shadow-md ">
+                            <figure className="h-48 w-full overflow-hidden flex items-center justify-center ">
+                                <img
+                                className='h-full w-auto object-cover'
+                                    src={data.image}
+                                    alt="image" />
+                            </figure>
+                            <div className="card-body space-y-4">
+                                <h2 className="card-title">
+                                    {data.title}
+                                    <div className="badge badge-secondary">
+                                        {
+                                            new Date(data.date).toDateString() !== new Date().toDateString() ? 'Ongoing' : 'End'
+                                        }
+                                    </div>
+                                </h2>
+                                <p>{data.description}</p>
+                                <div className="card-actions ">
+                                    <div className="badge badge-outline"> Deadline: {data.date}</div>
+                                    <div className="badge badge-outline">Min Amount: ${data.amount}</div>
+                                </div>
+                                <button className='btn btn-neutral'>See more</button>
+                            </div>
+                        </div>
+                    )
+                }
             </section>
             {/* running campaign section end */}
 
