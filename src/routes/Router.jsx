@@ -53,15 +53,19 @@ const Router = createBrowserRouter([
       },
       {
         path: '/auth/myCamp',
-        element: <MyCamp></MyCamp>
+        element: <MyCamp></MyCamp>,
+        loader: ()=>fetch('http://localhost:4000/campaigns')
+
       },
       {
         path: '/auth/myDonation',
-        element: <MyDonation></MyDonation>
+        element: <MyDonation></MyDonation>,
       },
       {
         path: '/auth/details/:id',
-        element: <Details></Details>,
+        element: <PrivateRouter>
+          <Details></Details>
+        </PrivateRouter>,
         loader: ({params})=> fetch(`http://localhost:4000/campaigns/${params.id}`)
       }
     ]

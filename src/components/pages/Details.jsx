@@ -5,7 +5,7 @@ const Details = () => {
     const { title,description, image } = data
 
     const handleDonateBtn=()=>{
-
+      console.log('object')
     }
     return (
         <div className="hero bg-base-200 ">

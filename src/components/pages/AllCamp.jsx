@@ -3,7 +3,7 @@ import Table from "../table";
 
 const AllCamp = () => {
     const allCampData = useLoaderData()
-
+    
     return (
         <div className="overflow-x-auto">
             <h1 className="font-bold text-3xl text-cyan-500 text-center">All Campaign</h1>

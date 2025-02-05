@@ -1,11 +1,14 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
 import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
     const { login, loginWithGoogle, setUser, } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    console.log(location)
 
     const handleLogin = e => {
         e.preventDefault()
@@ -20,6 +23,7 @@ const Login = () => {
                 console.log(result.user)
                 setUser(result.user)
                 toast.success(`welcome ${ result.user?.displayName? result.user.displayName : ''} to Crowd Funding`)
+                navigate(location?.state ? location.state : '/')
             })
             .catch(err => {
                 toast.error(err.message)
@@ -32,6 +36,7 @@ const Login = () => {
                 console.log(result.user)
                 setUser(result.user)
                 toast.success(`welcome ${ result.user?.displayName? result.user.displayName : ''} to Crowd Funding`)
+                navigate(location?.state ? location.state : '/')
             })
             .catch(err => {
                 toast.error(err.message)

@@ -35,7 +35,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Crowd Funding</a>
+                <a className="btn btn-ghost text-2xl font-bold">Crowd Funding</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -50,7 +50,7 @@ const Navbar = () => {
                                 <Tooltip anchorSelect=".photoId" place="left">
                                     {user?.displayName}
                                 </Tooltip>
-                                <img src={user?.photoURL} alt="profile photo" className="rounded-full " />
+                                <img src={user?.photoURL} alt="profile photo" className="rounded-full" />
                             </p>
                             <button onClick={logOut} className="btn">Log Out</button>
                         </>

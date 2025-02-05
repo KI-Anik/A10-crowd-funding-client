@@ -14,6 +14,7 @@ const AddCampaign = () => {
         const amount = form.amount.value;
         const date = form.date.value;
         const image = form.image.value;
+        const email = form.email.value
 
         console.log('form', title, description, type, amount, image, date)
 
@@ -25,6 +26,7 @@ const AddCampaign = () => {
             amount:amount,
             date:date,
             image:image,
+            email: email
         };
         console.log(finalData)
 
@@ -144,7 +146,7 @@ const AddCampaign = () => {
                         defaultValue={user?.email}
 
                         id="name"
-                        name="name"
+                        name="email"
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                         readOnly
                     />
