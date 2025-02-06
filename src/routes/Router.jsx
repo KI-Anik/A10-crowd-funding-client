@@ -23,12 +23,12 @@ const Router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: ()=>fetch('http://localhost:4000/campaigns')
+        loader: () => fetch('http://localhost:4000/campaigns')
       },
       {
         path: 'allCamp',
         element: <AllCamp></AllCamp>,
-        loader: ()=>fetch('http://localhost:4000/campaigns')
+        loader: () => fetch('http://localhost:4000/campaigns')
       },
 
     ]
@@ -53,20 +53,24 @@ const Router = createBrowserRouter([
       },
       {
         path: '/auth/myCamp',
-        element: <MyCamp></MyCamp>,
-        loader: ()=>fetch('http://localhost:4000/campaigns')
-
+        element: <PrivateRouter>
+          <MyCamp></MyCamp>
+        </PrivateRouter>,
+        loader: () => fetch('http://localhost:4000/campaigns')
       },
       {
         path: '/auth/myDonation',
-        element: <MyDonation></MyDonation>,
+        element: <PrivateRouter>
+          <MyDonation></MyDonation>
+        </PrivateRouter>,
+        loader: () => fetch('http://localhost:4000/users')
       },
       {
         path: '/auth/details/:id',
         element: <PrivateRouter>
           <Details></Details>
         </PrivateRouter>,
-        loader: ({params})=> fetch(`http://localhost:4000/campaigns/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:4000/campaigns/${params.id}`)
       }
     ]
   }

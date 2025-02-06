@@ -55,7 +55,7 @@ const Home = () => {
                                     </h2>
                                     <p>{data.description}</p>
                                     <div className="card-actions ">
-                                        <div className="badge badge-outline"> Deadline: {data.date}</div>
+                                        <div className="badge badge-outline"> {data.type}</div>
                                         <div className="badge badge-outline">Min Amount: ${data.amount}</div>
                                     </div>
                                     <Link to={`/auth/details/${data._id}`} className='btn btn-neutral'>See more</Link>
