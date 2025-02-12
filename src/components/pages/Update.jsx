@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from 'sweetalert2'
 import { useLoaderData } from "react-router-dom";
+import { Typewriter } from 'react-simple-typewriter'
 
 const Update = () => {
     const { user } = useContext(AuthContext)
@@ -69,7 +70,17 @@ const Update = () => {
     }
     return (
         <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md ">
-            <h2 className="text-2xl font-bold mb-6 text-cyan-500 ">Update your Campaign</h2>
+            <h2 className="text-2xl font-bold mb-6 text-cyan-500">
+                <Typewriter
+                 words={['Update', 'Your', 'Campaign', 'Update Your Campaign!']}
+                 loop={5}
+                 cursor
+                 cursorStyle='_'
+                 typeSpeed={70}
+                 deleteSpeed={50}
+                 delaySpeed={1000}
+                ></Typewriter>
+            </h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700" htmlFor="title">
