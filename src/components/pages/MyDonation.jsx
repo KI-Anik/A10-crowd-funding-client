@@ -6,7 +6,7 @@ const MyDonation = () => {
     const data = useLoaderData()
     const { user } = useContext(AuthContext)
     const validation = data.filter(data => data.email == user?.email)
-    console.log(validation)
+    
     return (
         <section className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 my-8 mx-5'>
             {

@@ -64,7 +64,7 @@ const Router = createBrowserRouter([
         element: <PrivateRouter>
           <MyDonation></MyDonation>
         </PrivateRouter>,
-        loader: () => fetch('https://a10-crowd-funding.vercel.app/users')
+        loader: () => fetch('https://a10-crowd-funding.vercel.app/donars')
       },
       {
         path: '/auth/details/:id',

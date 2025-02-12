@@ -16,12 +16,12 @@ const Register = () => {
         const email = form.email.value
         const password = form.password.value
 
-        // password conditional check
-        // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/
-        // if (!passwordRegex.test(password)) {
-        //   toast.error('password should be at least one uppercase, one lowercase and 6 character long')
-        //   return
-        // }
+        // conditionally, password checking
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/
+        if (!passwordRegex.test(password)) {
+          toast.error('password should be at least one uppercase, one lowercase and 6 character long')
+          return
+        }
 
         // authentication start
         createNewUser(email, password)
@@ -51,7 +51,7 @@ const Register = () => {
                 navigate(location?.state ? location.state : '/')
             })
             .catch(err => {
-                toast.error(err.message)
+                toast.error(err.code)
             })
     }
     // authentication end

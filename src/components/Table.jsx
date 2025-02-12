@@ -28,7 +28,6 @@ const Table = ({ SingleCampData, idx, remaining, setRemaining }) => {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            console.log('deleted data', data)
                             if (data.deletedCount) {
                                 Swal.fire({
                                     title: "Deleted!",

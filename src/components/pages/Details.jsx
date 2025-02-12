@@ -10,7 +10,6 @@ const Details = () => {
   const [isDisabled, setIsDisabled] = useState(false)
 
   useEffect(() => {
-    console.log('useeffect')
     if (new Date(date) <= new Date()) {
       setIsDisabled(true)
        Swal.fire({
@@ -42,9 +41,8 @@ const Details = () => {
       }
     }).then((result) => {
       if (result.value.donation > amount) {
-        console.log(result)
         const obj = (result.value)
-        fetch('https://a10-crowd-funding.vercel.app/users', {
+        fetch('https://a10-crowd-funding.vercel.app/donars', {
           method: 'POST',
           headers: {
             'content-type': 'application/json'

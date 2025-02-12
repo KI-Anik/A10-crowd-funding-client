@@ -23,7 +23,7 @@ const Login = () => {
                 navigate(location?.state ? location.state : '/')
             })
             .catch(err => {
-                toast.error(err.message)
+                toast.error(err.code)
             })
     }
 
@@ -35,7 +35,7 @@ const Login = () => {
                 navigate(location?.state ? location.state : '/')
             })
             .catch(err => {
-                toast.error(err.message)
+                toast.error(err.code)
             })
     }
     return (

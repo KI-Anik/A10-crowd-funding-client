@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
-import Table from "../table";
 import { useState } from "react";
+import Table from "../Table";
 
 const AllCamp = () => {
     const initialData = useLoaderData()
@@ -10,7 +10,7 @@ const AllCamp = () => {
         const sortedData = [...allCampData].sort((b,a) => b.amount - a.amount)
         setAllCampData(sortedData)
     }
-console.log(allCampData)
+
     return (
         <div className="overflow-x-auto">
             <h1 className="font-bold text-3xl text-cyan-500 text-center">All Campaign</h1>

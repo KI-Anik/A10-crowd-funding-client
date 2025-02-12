@@ -16,42 +16,51 @@ const AddCampaign = () => {
         const image = form.image.value;
         const email = form.email.value
 
-        console.log('form', title, description, type, amount, image, date)
-
         // process data for sending to DB
-        const finalData ={
+        const NewCampData = {
             title: title,
             description: description,
-            type:type,
-            amount:amount,
-            date:date,
-            image:image,
+            type: type,
+            amount: amount,
+            date: date,
+            image: image,
             email: email
         };
-        console.log(finalData)
 
-        fetch('https://a10-crowd-funding.vercel.app/campaigns',{
+        fetch('https://a10-crowd-funding.vercel.app/campaigns', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify(finalData)
+            body: JSON.stringify(NewCampData)
         })
-        .then(res =>res.json())
-        .then(data =>{
-            console.log(data)
-            if(data.acknowledged){
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Campaign added",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                } else {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "There was an issue adding your Campaign.",
+                        icon: "error"
+                    });
+                }
+            })
+            .catch(err => {
                 Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Campaign added",
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-                  
-            }
-            form.reset()
-        })
+                    title: "Error!",
+                    text: `${err.code}`,
+                    icon: "error"
+                });
+            });
+        form.reset()
 
     }
     return (
@@ -140,7 +149,7 @@ const AddCampaign = () => {
 
                 <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700" htmlFor="title">
-                        User Email 
+                        User Email
                     </label>
                     <input
                         defaultValue={user?.email}

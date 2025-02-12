@@ -20,7 +20,6 @@ const Update = () => {
         const image = form.image.value;
         const email = form.email.value
 
-        console.log('form',{ title, description, type, amount, image, date})
 
         // process data for sending to DB
         const updatedData = {
@@ -32,7 +31,6 @@ const Update = () => {
             image: image,
             email: email
         };
-        console.log(updatedData)
 
         fetch(`https://a10-crowd-funding.vercel.app/campaigns/${_id}`, {
             method: 'PATCH',
@@ -43,7 +41,7 @@ const Update = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('Server response:', data); // Log the server response
+                
                 if (data.modifiedCount) { // Ensure the property name matches the server response
                     Swal.fire({
                         title: "Success!",
