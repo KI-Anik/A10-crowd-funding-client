@@ -1,12 +1,23 @@
 import { useLoaderData } from "react-router-dom";
 import Table from "../table";
+import { useState } from "react";
 
 const AllCamp = () => {
-    const allCampData = useLoaderData()
+    const initialData = useLoaderData()
+    const [allCampData, setAllCampData] = useState(initialData)
+
+    const handleSorting = () => {
+        console.log('object')
+        const sortedData = [...allCampData].sort((b,a) => b.amount - a.amount)
+        setAllCampData(sortedData)
+    }
 
     return (
         <div className="overflow-x-auto">
             <h1 className="font-bold text-3xl text-cyan-500 text-center">All Campaign</h1>
+            <div className="flex justify-end">
+                <button onClick={handleSorting} className="btn btn-neutral p-5">Sort by Price - Descending</button>
+            </div>
             {
                 allCampData === 0 ? <div className="p-5">
                     <p className="text-5xl text-red-500 font-bold text-center">No Data found</p>
@@ -27,13 +38,12 @@ const AllCamp = () => {
                         </thead>
                         <tbody >
                             {
-                                allCampData.map((SingleCampData, idx) => <Table
+                                allCampData.map((SingleCampData, idx) => (<Table
                                     key={SingleCampData._id}
                                     idx={idx}
                                     SingleCampData={SingleCampData}
-                                ></Table>)
+                                ></Table>))
                             }
-
                         </tbody>
                     </table>
             }

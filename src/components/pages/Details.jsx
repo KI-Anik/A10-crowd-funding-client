@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from 'sweetalert2'
 import { AuthContext } from "../provider/AuthProvider";
@@ -7,6 +7,19 @@ const Details = () => {
   const data = useLoaderData()
   const { title, description, amount, image, date } = data
   const { user } = useContext(AuthContext)
+  const [isDisabled, setIsDisabled] = useState(false)
+
+  useEffect(() => {
+    console.log('useeffect')
+    if (new Date(date) <= new Date()) {
+      setIsDisabled(true)
+       Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You missed the deadline",
+      });
+    }
+  }, [date])
 
   const handleDonateBtn = () => {
 
@@ -52,6 +65,7 @@ const Details = () => {
           })
       }
     });
+
   }
 
   return (
@@ -72,7 +86,11 @@ const Details = () => {
           {
 
           }
-          <button onClick={handleDonateBtn} className="btn btn-primary">Donate Now</button>
+          <button onClick={handleDonateBtn}
+            disabled={isDisabled}
+            className="btn btn-primary">
+            Donate Now
+          </button>
         </div>
       </div>
     </div>

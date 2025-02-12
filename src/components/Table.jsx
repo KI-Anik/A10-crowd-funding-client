@@ -46,43 +46,44 @@ const Table = ({ SingleCampData, idx, remaining, setRemaining }) => {
     return (
         <>
             <tr >
-                <td className="font-semibold"> {idx + 1}</td>
-                <td className="h-16 overflow-hidden flex items-center justify-center">
-                    <img
-                        className="h-full  rounded-b-field mx-auto "
-                        src={image}
-                        alt="photo" />
-                </td>
-                <td><div className="font-bold">{title}</div></td>
-                <td><div className="font-bold">{type}</div></td>
-                <td><div className="font-bold"> ${amount}</div></td>
+                    <td className="font-semibold"> {idx + 1}</td>
+                    <td className="h-16 overflow-hidden flex items-center justify-center">
+                        <img
+                            className="h-full  rounded-b-field mx-auto "
+                            src={image}
+                            alt="photo" />
+                    </td>
+                    <td><div className="font-bold">{title}</div></td>
+                    <td><div className="font-bold">{type}</div></td>
+                    <td><div className="font-bold"> ${amount}</div></td>
 
-                {
-                    isMyCampPage ? <>
-                        <td>{date}</td>
-                        <td>
-                            <div className="flex justify-evenly">
-                                <Link to={`/auth/updateCamp/${_id}`} className="btn"> Update</Link>
-                                <button onClick={() => handleDelete(_id)} className="btn"> Delete</button>
-                            </div>
-                        </td>
-                    </>
-                        :
-                        <>
-                            <td>
-                                <div className="badge badge-secondary">
-                                    {
-                                        new Date(date) >= new Date() ? 'Ongoing' : 'End'
-                                    }
-                                </div>
-                            </td>
-                            <Fade direction="left">
-                            <td>
-                                <Link to={`/auth/details/${_id}`} className="btn btn-accent btn-md">See More</Link>
-                            </td>
-                            </Fade>
-                        </>
-                }
+                    {
+                        isMyCampPage ?
+                            <>
+                                <td>{date}</td>
+                                <td>
+                                    <div className="flex justify-evenly">
+                                        <Link to={`/auth/updateCamp/${_id}`} className="btn"> Update</Link>
+                                        <button onClick={() => handleDelete(_id)} className="btn"> Delete</button>
+                                    </div>
+                                </td>
+                            </>
+                            :
+                            <>
+                                <td>
+                                    <div className="badge badge-secondary">
+                                        {
+                                            new Date(date) >= new Date() ? 'Ongoing' : 'End'
+                                        }
+                                    </div>
+                                </td>
+                                <td>
+                                <Fade direction="left">
+                                    <Link to={`/auth/details/${_id}`} className="btn btn-accent btn-md">See More</Link>
+                                </Fade>
+                                </td>
+                            </>
+                    }
             </tr>
         </>
     );
