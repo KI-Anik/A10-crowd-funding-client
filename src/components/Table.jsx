@@ -10,42 +10,38 @@ const Table = ({ SingleCampData, idx, remaining, setRemaining }) => {
     const isMyCampPage = location.pathname === '/auth/myCamp'
 
     const handleDelete = id => {
-        console.log(id)
-
         Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!"
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
         })
-        .then((result) => {
-            if (result.isConfirmed){
+            .then((result) => {
+                if (result.isConfirmed) {
 
-        fetch(`http://localhost:4000/campaigns/${id}`, {
-            method: "DELETE"
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log('deleted data', data)
-                if(data.deletedCount){
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your campaign has been deleted.",
-                        icon: "success",
-                    });
+                    fetch(`http://localhost:4000/campaigns/${id}`, {
+                        method: "DELETE"
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log('deleted data', data)
+                            if (data.deletedCount) {
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: "Your campaign has been deleted.",
+                                    icon: "success",
+                                });
+                            }
+                            const updateData = remaining.filter(camp => camp._id != id)
+                            setRemaining(updateData)
+                        })
                 }
-                const updateData = remaining.filter(camp => camp._id != id)
-                setRemaining(updateData)
             })
-        }
-    })
-
     }
-    
-    // console.log('after', camState)
+
     return (
         <>
             <tr >
@@ -65,7 +61,7 @@ const Table = ({ SingleCampData, idx, remaining, setRemaining }) => {
                         <td>{date}</td>
                         <td>
                             <div className="flex justify-evenly">
-                                <button className="btn"> Update</button>
+                                <Link to={`/auth/update/${_id}`} className="btn"> Update</Link>
                                 <button onClick={() => handleDelete(_id)} className="btn"> Delete</button>
                             </div>
                         </td>
