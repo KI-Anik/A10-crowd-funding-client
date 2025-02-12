@@ -7,7 +7,7 @@ import { Typewriter } from 'react-simple-typewriter'
 const Update = () => {
     const { user } = useContext(AuthContext)
     const campData = useLoaderData()
-    const { _id,title,description,amount,date,image } = campData
+    const { _id, title, description, amount, date, image } = campData
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,7 +20,7 @@ const Update = () => {
         const image = form.image.value;
         const email = form.email.value
 
-        console.log('form', title, description, type, amount, image, date)
+        console.log('form',{ title, description, type, amount, image, date})
 
         // process data for sending to DB
         const updatedData = {
@@ -34,7 +34,7 @@ const Update = () => {
         };
         console.log(updatedData)
 
-        fetch(`http://localhost:4000/campaigns/${_id}`, {
+        fetch(`https://a10-crowd-funding.vercel.app/campaigns/${_id}`, {
             method: 'PATCH',
             headers: {
                 "content-type": "application/json"
@@ -59,7 +59,7 @@ const Update = () => {
                 }
             })
             .catch(error => {
-                console.error('Error:', error);
+                console.error('Error:', error.message);
                 Swal.fire({
                     title: "Error!",
                     text: "There was an issue adding your Campaign.",
@@ -72,13 +72,13 @@ const Update = () => {
         <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md ">
             <h2 className="text-2xl font-bold mb-6 text-cyan-500">
                 <Typewriter
-                 words={['Update', 'Your', 'Campaign', 'Update Your Campaign!']}
-                 loop={5}
-                 cursor
-                 cursorStyle='_'
-                 typeSpeed={70}
-                 deleteSpeed={50}
-                 delaySpeed={1000}
+                    words={['Update', 'Your', 'Campaign', 'Update Your Campaign!']}
+                    loop={5}
+                    cursor
+                    cursorStyle='_'
+                    typeSpeed={70}
+                    deleteSpeed={50}
+                    delaySpeed={1000}
                 ></Typewriter>
             </h2>
             <form onSubmit={handleSubmit}>
@@ -101,6 +101,7 @@ const Update = () => {
                         Description
                     </label>
                     <textarea
+                        type="text"
                         id="description"
                         name="description"
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"

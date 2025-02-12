@@ -44,7 +44,7 @@ const Details = () => {
       if (result.value.donation > amount) {
         console.log(result)
         const obj = (result.value)
-        fetch('http://localhost:4000/users', {
+        fetch('https://a10-crowd-funding.vercel.app/users', {
           method: 'POST',
           headers: {
             'content-type': 'application/json'

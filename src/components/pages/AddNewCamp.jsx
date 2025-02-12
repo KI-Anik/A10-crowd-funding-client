@@ -30,7 +30,7 @@ const AddCampaign = () => {
         };
         console.log(finalData)
 
-        fetch('http://localhost:4000/campaigns',{
+        fetch('https://a10-crowd-funding.vercel.app/campaigns',{
             method: 'POST',
             headers: {
                 "content-type": "application/json"

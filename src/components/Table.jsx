@@ -23,7 +23,7 @@ const Table = ({ SingleCampData, idx, remaining, setRemaining }) => {
             .then((result) => {
                 if (result.isConfirmed) {
 
-                    fetch(`http://localhost:4000/campaigns/${id}`, {
+                    fetch(`https://a10-crowd-funding.vercel.app/campaigns/${id}`, {
                         method: "DELETE"
                     })
                         .then(res => res.json())

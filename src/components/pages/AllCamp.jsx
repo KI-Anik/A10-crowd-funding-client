@@ -10,7 +10,7 @@ const AllCamp = () => {
         const sortedData = [...allCampData].sort((b,a) => b.amount - a.amount)
         setAllCampData(sortedData)
     }
-
+console.log(allCampData)
     return (
         <div className="overflow-x-auto">
             <h1 className="font-bold text-3xl text-cyan-500 text-center">All Campaign</h1>
@@ -18,7 +18,7 @@ const AllCamp = () => {
                 <button onClick={handleSorting} className="btn btn-neutral p-5">Sort by Price - Descending</button>
             </div>
             {
-                allCampData === 0 ? <div className="p-5">
+                allCampData == 0 ? <div className="p-5">
                     <p className="text-5xl text-red-500 font-bold text-center">No Data found</p>
                 </div>
                     :

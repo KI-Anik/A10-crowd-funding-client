@@ -24,12 +24,12 @@ const Router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:4000/campaigns')
+        loader: () => fetch('https://a10-crowd-funding.vercel.app/campaigns')
       },
       {
         path: 'allCamp',
         element: <AllCamp></AllCamp>,
-        loader: () => fetch('http://localhost:4000/campaigns')
+        loader: () => fetch('https://a10-crowd-funding.vercel.app/campaigns')
       },
 
     ]
@@ -57,26 +57,26 @@ const Router = createBrowserRouter([
         element: <PrivateRouter>
           <MyCamp></MyCamp>
         </PrivateRouter>,
-        loader: () => fetch('http://localhost:4000/campaigns')
+        loader: () => fetch('https://a10-crowd-funding.vercel.app/campaigns')
       },
       {
         path: '/auth/myDonation',
         element: <PrivateRouter>
           <MyDonation></MyDonation>
         </PrivateRouter>,
-        loader: () => fetch('http://localhost:4000/users')
+        loader: () => fetch('https://a10-crowd-funding.vercel.app/users')
       },
       {
         path: '/auth/details/:id',
         element: <PrivateRouter>
           <Details></Details>
         </PrivateRouter>,
-        loader: ({ params }) => fetch(`http://localhost:4000/campaigns/${params.id}`)
+        loader: ({ params }) => fetch(`https://a10-crowd-funding.vercel.app/campaigns/${params.id}`)
       },
       {
         path: '/auth/updateCamp/:id',
         element:<Update></Update>,
-        loader: ({ params }) => fetch(`http://localhost:4000/campaigns/${params.id}`),
+        loader: ({ params }) => fetch(`https://a10-crowd-funding.vercel.app/campaigns/${params.id}`),
       }
     ]
   }
