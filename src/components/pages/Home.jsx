@@ -11,11 +11,19 @@ import banner3 from '../../assets/Crowdfunding-Guide.png';
 import { Link, useLoaderData } from 'react-router-dom';
 import ExtraTwoSec from '../../ExtraTwoSec';
 import { Fade } from 'react-awesome-reveal';
+import { useState } from 'react';
 
 const Home = () => {
-    const allData = useLoaderData()
-    return (
+    const allCampaigns = useLoaderData();
+    const [showAll, setShowAll] = useState(false);
 
+    // Filter campaigns where the deadline is still ongoing
+    const ongoingCampaigns = allCampaigns.filter(campaign => new Date(campaign.date) >= new Date());
+
+    // If showAll is false, only show the first 6 campaigns
+    const displayedCampaigns = showAll ? ongoingCampaigns : ongoingCampaigns.slice(0, 6);
+
+    return (
         <div>
             <section>
                 <Swiper
@@ -33,43 +41,72 @@ const Home = () => {
                 </Swiper>
             </section>
 
-            {/* running campaign section start */}
-            <section className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 my-8'>
-                {
-                    allData.map((data, index) =>
-                        new Date(data.date) >= new Date() && // conditional for display only ongoing campaign
+                {/* running campaign section start */}
+            <section>
+                <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 my-8'>
+                    {
+                        displayedCampaigns.map((data, index) =>
+                            <div key={data._id} className="card bg-base-100 shadow-md ">
 
-                        <div key={data._id} className="card bg-base-100 shadow-md ">
-                            <Fade cascade={false} delay={index * 200} triggerOnce={true} direction='up'>
-                                <figure className="h-48 w-full overflow-hidden flex items-center justify-center ">
-                                    <img
-                                        className='h-full w-auto object-cover'
-                                        src={data.image}
-                                        alt="image" />
-                                </figure>
+                                {/* implement animation  */}
+                                <Fade cascade={false} delay={index * 200} triggerOnce={true} direction='up'>
+                                    <figure className="h-48 w-full overflow-hidden flex items-center justify-center ">
+                                        <img
+                                            className='h-full w-auto object-cover'
+                                            src={data.image}
+                                            alt="image" />
+                                    </figure>
+                                </Fade>
                                 <div className="card-body space-y-4">
-                                    <h2 className="card-title">
-                                        {data.title}
-                                        <div className="badge p-3 badge-secondary">
-                                            {
-                                                new Date(data.date).toDateString() !== new Date().toDateString() ? 'Ongoing' : 'End'
-                                            }
-                                        </div>
-                                    </h2>
+
+                                    <Fade direction='left' triggerOnce={true}>
+                                        <h2 className="card-title">
+                                            {data.title}
+                                            <div className="badge p-3 badge-secondary">
+                                                ongoing
+                                            </div>
+                                        </h2>
+                                    </Fade>
                                     <p>{data.description}</p>
                                     <div className="card-actions ">
                                         <div className="badge badge-outline"> {data.type}</div>
                                         <div className="badge badge-outline">Min Amount: ${data.amount}</div>
                                     </div>
+
                                     <Link to={`/auth/details/${data._id}`} className='btn btn-neutral'>See more</Link>
                                 </div>
-                            </Fade>
-                        </div>
+                            </div>
+                        )
+                    }
+                </div>
 
-                    )
-                }
+                <div className="flex justify-end mt-6">
+                    {/* View All Button */}
+                    {!showAll && ongoingCampaigns.length > 6 && (
+                        <div>
+                            <button
+                                onClick={() => setShowAll(true)}
+                                className="btn btn-accent p-5"
+                            >
+                                View All
+                            </button>
+
+                        </div>
+                    )}
+
+                    {/* close btn */}
+                    {
+                        showAll && <div>
+                            <button
+                                onClick={() => setShowAll(false)}
+                                className="btn btn-accent p-5"
+                            >Close</button>
+                        </div>
+                    }
+                </div>
             </section>
-            {/* running campaign section end */}
+                {/* running campaign section end */}
+
             <section>
                 <ExtraTwoSec></ExtraTwoSec>
             </section>

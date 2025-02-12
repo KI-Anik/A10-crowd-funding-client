@@ -8,19 +8,16 @@ const Login = () => {
     const { login, loginWithGoogle, setUser, } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
-    console.log(location)
 
     const handleLogin = e => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value
         const password = form.password.value
-        console.log(email, password)
 
         // authentication start
         login(email, password)
             .then(result => {
-                console.log(result.user)
                 setUser(result.user)
                 toast.success(`welcome ${ result.user?.displayName? result.user.displayName : ''} to Crowd Funding`)
                 navigate(location?.state ? location.state : '/')
@@ -33,7 +30,6 @@ const Login = () => {
     const handleGoogle = () => {
         loginWithGoogle()
             .then(result => {
-                console.log(result.user)
                 setUser(result.user)
                 toast.success(`welcome ${ result.user?.displayName? result.user.displayName : ''} to Crowd Funding`)
                 navigate(location?.state ? location.state : '/')

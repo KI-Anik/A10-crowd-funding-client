@@ -15,7 +15,6 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value
         const password = form.password.value
-        console.log(name, photo, email, password)
 
         // password conditional check
         // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/
@@ -26,9 +25,7 @@ const Register = () => {
 
         // authentication start
         createNewUser(email, password)
-            .then(result => {
-                console.log(result.user)
-
+            .then(() => {
                 // profile start
                 updateUserProfile({displayName: name, photoURL: photo })
                     .then(() => {
@@ -36,13 +33,13 @@ const Register = () => {
                         toast.success('Account created successfully')
                     })
                     .catch(err => {
-                        console.log('from update', err.message)
+                        toast.error(err.code)
                     })
                     // profile end
             })
 
             .catch(err => {
-                console.log('handleRegister', err.message)
+                toast.error( err.code)
             })
         // authentication end
     }

@@ -7,7 +7,6 @@ const AllCamp = () => {
     const [allCampData, setAllCampData] = useState(initialData)
 
     const handleSorting = () => {
-        console.log('object')
         const sortedData = [...allCampData].sort((b,a) => b.amount - a.amount)
         setAllCampData(sortedData)
     }
