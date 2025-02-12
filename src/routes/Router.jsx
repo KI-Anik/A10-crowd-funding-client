@@ -74,7 +74,7 @@ const Router = createBrowserRouter([
         loader: ({ params }) => fetch(`http://localhost:4000/campaigns/${params.id}`)
       },
       {
-        path: '/auth/update/:id',
+        path: '/auth/updateCamp/:id',
         element:<Update></Update>,
         loader: ({ params }) => fetch(`http://localhost:4000/campaigns/${params.id}`),
       }

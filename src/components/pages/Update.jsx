@@ -46,13 +46,13 @@ const Update = () => {
                 if (data.modifiedCount) { // Ensure the property name matches the server response
                     Swal.fire({
                         title: "Success!",
-                        text: "Your coffee updated Successfully.",
+                        text: "Your Campaign updated Successfully.",
                         icon: "success"
                     });
                 } else {
                     Swal.fire({
                         title: "Error!",
-                        text: "There was an issue adding your coffee.",
+                        text: "There was an issue adding your Campaign.",
                         icon: "error"
                     });
                 }
@@ -61,7 +61,7 @@ const Update = () => {
                 console.error('Error:', error);
                 Swal.fire({
                     title: "Error!",
-                    text: "There was an issue adding your coffee.",
+                    text: "There was an issue adding your Campaign.",
                     icon: "error"
                 });
             });

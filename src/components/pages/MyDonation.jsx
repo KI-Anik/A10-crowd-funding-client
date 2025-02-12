@@ -30,7 +30,7 @@ const MyDonation = () => {
                                 </h2>
                                 <p>{data.description}</p>
                                 <div className="">
-                                    <div className="badge badge-outline p-5"> Your donation is: ${data.donation}</div>
+                                    <p className="badge badge-outline p-5 text-xl"> Your donation is: ${data.donation}</p>
                                 </div>
                             </div>
                         </div>

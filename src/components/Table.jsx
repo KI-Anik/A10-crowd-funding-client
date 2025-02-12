@@ -3,6 +3,7 @@
 // import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Swal from 'sweetalert2'
+import { Fade } from "react-awesome-reveal";
 
 const Table = ({ SingleCampData, idx, remaining, setRemaining }) => {
     const { _id, title, type, amount, date, image } = SingleCampData;
@@ -61,7 +62,7 @@ const Table = ({ SingleCampData, idx, remaining, setRemaining }) => {
                         <td>{date}</td>
                         <td>
                             <div className="flex justify-evenly">
-                                <Link to={`/auth/update/${_id}`} className="btn"> Update</Link>
+                                <Link to={`/auth/updateCamp/${_id}`} className="btn"> Update</Link>
                                 <button onClick={() => handleDelete(_id)} className="btn"> Delete</button>
                             </div>
                         </td>
@@ -75,9 +76,11 @@ const Table = ({ SingleCampData, idx, remaining, setRemaining }) => {
                                     }
                                 </div>
                             </td>
+                            <Fade direction="left">
                             <td>
                                 <Link to={`/auth/details/${_id}`} className="btn btn-accent btn-md">See More</Link>
                             </td>
+                            </Fade>
                         </>
                 }
             </tr>

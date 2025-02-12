@@ -9,6 +9,8 @@ import banner1 from '../../assets/crowdfunding-donations.jpg';
 import banner2 from '../../assets/crowdfunding-for-events.jpg';
 import banner3 from '../../assets/Crowdfunding-Guide.png';
 import { Link, useLoaderData } from 'react-router-dom';
+import ExtraTwoSec from '../../ExtraTwoSec';
+import { Fade } from 'react-awesome-reveal';
 
 const Home = () => {
     const allData = useLoaderData()
@@ -34,10 +36,11 @@ const Home = () => {
             {/* running campaign section start */}
             <section className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 my-8'>
                 {
-                    allData.map(data =>
+                    allData.map((data, index) =>
                         new Date(data.date) >= new Date() && // conditional for display only ongoing campaign
 
-                            <div key={data._id} className="card bg-base-100 shadow-md ">
+                        <div key={data._id} className="card bg-base-100 shadow-md ">
+                            <Fade cascade={false} delay={index * 200} triggerOnce={true} direction='up'>
                                 <figure className="h-48 w-full overflow-hidden flex items-center justify-center ">
                                     <img
                                         className='h-full w-auto object-cover'
@@ -60,12 +63,16 @@ const Home = () => {
                                     </div>
                                     <Link to={`/auth/details/${data._id}`} className='btn btn-neutral'>See more</Link>
                                 </div>
-                            </div>
+                            </Fade>
+                        </div>
+
                     )
                 }
             </section>
             {/* running campaign section end */}
-
+            <section>
+                <ExtraTwoSec></ExtraTwoSec>
+            </section>
         </div>
     );
 };
