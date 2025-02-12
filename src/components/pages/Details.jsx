@@ -11,7 +11,7 @@ const Details = () => {
   const handleDonateBtn = () => {
 
     Swal.fire({
-      title: 'Cool example',
+      title: 'Enter Your Amount',
       html: `
       <input type= "number" id="donation" class="swal2-input" placeholder= 'Enter your amount'>
     `,
@@ -39,7 +39,17 @@ const Details = () => {
           body: JSON.stringify(obj)
         })
           .then(res => res.json())
-          .then(data => console.log(data))
+          .then(data => {
+            if (data.acknowledged) {
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "taken",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }
+          })
       }
     });
   }

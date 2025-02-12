@@ -32,7 +32,7 @@ const Register = () => {
                 // profile start
                 updateUserProfile({displayName: name, photoURL: photo })
                     .then(() => {
-                        navigate('/')
+                        navigate(location?.state ? location.state : '/')
                         toast.success('Account created successfully')
                     })
                     .catch(err => {
@@ -51,7 +51,7 @@ const Register = () => {
         loginWithGoogle()
             .then(result => {
                 setUser(result.user)
-                console.log(result.user)
+                navigate(location?.state ? location.state : '/')
             })
             .catch(err => {
                 toast.error(err.message)

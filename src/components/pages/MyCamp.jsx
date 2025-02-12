@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Table from "../table";
@@ -7,7 +7,7 @@ const MyCamp = () => {
     const allCampData = useLoaderData()
     const { user } = useContext(AuthContext)
     const filter = allCampData.filter(camp => camp.email == user?.email)
-    console.log(filter)
+    const [remaining,setRemaining] = useState(filter)
     return (
         <div className="overflow-x-auto">
             <h1 className="font-bold text-3xl text-cyan-500 text-center">My Campaign</h1>
@@ -29,10 +29,12 @@ const MyCamp = () => {
                         {/* row */}
                         <tbody >
                             {
-                                filter.map((SingleCampData, idx) => <Table
+                                remaining.map((SingleCampData, idx) => <Table
                                     key={SingleCampData._id}
                                     idx={idx}
                                     SingleCampData={SingleCampData}
+                                    remaining={remaining}
+                                    setRemaining={setRemaining}
                                 ></Table>)
                             }
                         </tbody>
