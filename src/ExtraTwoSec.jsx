@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-
 // import required modules
 import { Pagination } from 'swiper/modules';
 import { Link } from 'react-router-dom';
@@ -14,9 +13,7 @@ import { Link } from 'react-router-dom';
 const ExtraTwoSec = () => {
     return (
         <div className='text-center '>
-
             <h2 className="text-3xl text-sky-600 font-bold  my-14">We couldn&apos;t have done it without the donors like you</h2>
-
             <Swiper
                 slidesPerView={3}
                 spaceBetween={30}
@@ -36,8 +33,6 @@ const ExtraTwoSec = () => {
                 <SwiperSlide>
                     <div className=" p-8 pb-10 bg-white shadow-xl space-y-7">
                         <p>I know that my donations will get to the right people and assist them in their trouble. It makes me feel that I have done something special for those in need. I also believe Crowd Fund to be a worthy organisation and one which will use the money efficiently where it is most needed.</p>
-
-
                         <h4 className="font-semibold"> - Gashubije, a Crowd Fund Donor.</h4>
                     </div>
                 </SwiperSlide>
@@ -45,7 +40,6 @@ const ExtraTwoSec = () => {
                 <SwiperSlide>
                     <div className=" p-8 pb-10 bg-white shadow-xl space-y-7">
                         <p>It seemed to me, after working with various other organizations, that Crowd Fund is the most focused on children&apos;s needs and the most able. I feel I am able to make a difference no matter how big the task is with an organisation that never gives up!</p>
-
                         <h4 className="font-semibold"> - Mainus, a Crowd Fund Donor.</h4>
                     </div>
                 </SwiperSlide>
@@ -61,7 +55,6 @@ const ExtraTwoSec = () => {
                 <SwiperSlide>
                     <div className=" p-8 pb-10 bg-white shadow-xl space-y-7">
                         <p>I know that my donations will get to the right people and assist them in their trouble. It makes me feel that I have done something special for those in need. I also believe Crowd Fund to be a worthy organisation and one which will use the money efficiently where it is most needed.</p>
-
                         <h4 className="font-semibold"> - washington, a Crowd Fund Donor.</h4>
                     </div>
                 </SwiperSlide>
