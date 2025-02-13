@@ -3,7 +3,8 @@
 Welcome to **A10 Crowd Funding**, a modern crowdfunding platform built with **React, Tailwind CSS, MongoDB, and Firebase authentication**. Our platform connects donors with meaningful campaigns to bring impactful projects to life.
 
 ## 🌍 Live Site URL
-🔗 [Visit A10 Crowd Funding](#) *(https://a10-crowd-funding.web.app/)*
+🔗 [Visit A10 Crowd Funding](https://a10-crowd-funding.web.app/) 
+
 
 ## ✨ Features
 - **📝 Campaign Creation & Management:** Users can create, manage, and track crowdfunding campaigns with ease.
