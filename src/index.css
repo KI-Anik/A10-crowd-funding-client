@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+
 li>a {
   font-weight: 500;
   font-size: medium;
@@ -40,5 +41,7 @@ li>a {
 /* For Webkit browsers (Chrome, Safari) */
 input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
+  opacity: 1;
+  cursor: pointer;
 }
 

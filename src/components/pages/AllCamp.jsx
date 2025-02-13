@@ -15,7 +15,7 @@ const AllCamp = () => {
         <div className="overflow-x-auto">
             <h1 className="font-bold text-3xl text-cyan-500 text-center">All Campaign</h1>
             <div className="flex justify-end">
-                <button onClick={handleSorting} className="btn btn-neutral p-5">Sort by Price - Descending</button>
+                <button onClick={handleSorting} className="btn btn-neutral p-5">Sort by Price - Ascending</button>
             </div>
             {
                 allCampData == 0 ? <div className="p-5">
