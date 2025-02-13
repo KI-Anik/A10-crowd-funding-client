@@ -3,10 +3,11 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "./provider/AuthProvider";
 import Loading from "./Loading";
 import { Tooltip } from "react-tooltip";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
     const { user, logOut, loading } = useContext(AuthContext)
-    
+
     if (loading) {
         return <Loading></Loading>
     }
@@ -20,6 +21,8 @@ const Navbar = () => {
                 <li><NavLink to={'/auth/myDonation'}>My Donations</NavLink></li>
             </>
         }
+        <li className="mx-5"><ThemeToggle></ThemeToggle></li>
+
 
     </>
     return (
@@ -42,6 +45,7 @@ const Navbar = () => {
                     {links}
                 </ul>
             </div>
+
             <div className="navbar-end gap-4">
                 {
                     user && user?.email ?

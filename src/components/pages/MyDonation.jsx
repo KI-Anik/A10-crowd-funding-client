@@ -29,7 +29,7 @@ const MyDonation = () => {
                                     {data.title}
                                 </h2>
                                 <p>{data.description}</p>
-                                <div className="">
+                                <div>
                                     <p className="badge badge-outline p-5 text-xl"> Your donation is: ${data.donation}</p>
                                 </div>
                             </div>

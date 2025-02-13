@@ -6,13 +6,14 @@ import { AuthContext } from "../provider/AuthProvider";
 const Details = () => {
   const data = useLoaderData()
   const { title, description, amount, image, date } = data
-  const { user } = useContext(AuthContext)
+  const { user} = useContext(AuthContext)
   const [isDisabled, setIsDisabled] = useState(false)
+
 
   useEffect(() => {
     if (new Date(date) <= new Date()) {
       setIsDisabled(true)
-       Swal.fire({
+      Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "You missed the deadline",
@@ -21,7 +22,6 @@ const Details = () => {
   }, [date])
 
   const handleDonateBtn = () => {
-
     Swal.fire({
       title: 'Enter Your Amount',
       html: `
@@ -40,14 +40,14 @@ const Details = () => {
         return obj
       }
     }).then((result) => {
-      if (result.value.donation > amount) {
-        const obj = (result.value)
+      if (result.value.donation >= amount) {
+        const donationAmount = (result.value)
         fetch('https://a10-crowd-funding.vercel.app/donars', {
           method: 'POST',
           headers: {
             'content-type': 'application/json'
           },
-          body: JSON.stringify(obj)
+          body: JSON.stringify(donationAmount)
         })
           .then(res => res.json())
           .then(data => {
@@ -72,7 +72,8 @@ const Details = () => {
         <img
           src={image}
           className="max-w-sm rounded-lg shadow-2xl" />
-        <div className="space-y-4">
+
+        <div className="ml-16 space-y-4">
           <h1 className="text-5xl font-bold">{title}</h1>
           <p className="py-4">
             {description}
@@ -81,9 +82,7 @@ const Details = () => {
             <p className="text-xl font-semibold">Min Donation amount is: ${amount}</p>
             <p className="text-xl font-semibold">Deadline : {date}</p>
           </div>
-          {
 
-          }
           <button onClick={handleDonateBtn}
             disabled={isDisabled}
             className="btn btn-primary">
