@@ -6,8 +6,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 // import required modules
-import { Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Link } from 'react-router-dom';
+import { Fade } from 'react-awesome-reveal';
 
 
 const ExtraTwoSec = () => {
@@ -17,11 +18,11 @@ const ExtraTwoSec = () => {
             <Swiper
                 slidesPerView={3}
                 spaceBetween={30}
-                pagination={{
-                    clickable: true,
-                }}
-                modules={[Pagination]}
-                className="mySwiper"
+                pagination={{clickable: true}}
+                navigation={true} 
+                autoplay={{ delay: 3000, disableOnInteraction: false }} 
+                modules={[Navigation, Pagination, Autoplay]}
+                className=""
             >
                 <SwiperSlide>
                     <div className=" p-8 pb-10 bg-white shadow-xl space-y-7">
@@ -65,8 +66,11 @@ const ExtraTwoSec = () => {
 
 
             {/* LAST SECTION start */}
+
+
             <section className='space-y-6 bg-slate-300 p-12 text-center'>
                 <h2 className="text-5xl text-sky-600 font-bold  my-14">Frequently Asked Questions</h2>
+            <Fade direction='up'>
                 <div className="collapse collapse-arrow bg-base-200">
                     <input type="radio" name="my-accordion-2" defaultChecked />
                     <div className="collapse-title text-xl font-medium">What is Crowd Fund</div>
@@ -78,6 +82,8 @@ const ExtraTwoSec = () => {
                             Reaching people outside of your network</p>
                     </div>
                 </div>
+            </Fade>
+
                 <div className="collapse collapse-arrow bg-base-200">
                     <input type="radio" name="my-accordion-2" />
                     <div className="collapse-title text-xl font-medium">How does crowdfunding work? </div>
@@ -87,6 +93,7 @@ const ExtraTwoSec = () => {
                         <li>People contribute money to your campaign</li>
                     </div>
                 </div>
+                <Fade direction='up'>
                 <div className="collapse collapse-arrow bg-base-200">
                     <input type="radio" name="my-accordion-2" />
                     <div className="collapse-title text-xl font-medium">How will i know how my donation is being utilized?</div>
@@ -94,6 +101,7 @@ const ExtraTwoSec = () => {
                         <p>We will be sending you regular updates in the form of e-mails, digital communication, etc., of the progress that has been made and keep you updated about Crowd Fund&apos;s work, in the region, and around the world.</p>
                     </div>
                 </div>
+                </Fade>
             </section>
 
         </div>
