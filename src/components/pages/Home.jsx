@@ -24,8 +24,8 @@ const Home = () => {
     const displayedCampaigns = showAll ? ongoingCampaigns : ongoingCampaigns.slice(0, 6);
 
     return (
-        <div className='text-center'>
-            <div className='space-y-3'>
+        <div className=''>
+            <div className='text-center space-y-3'>
                 <h1 className='text-3xl font-semibold'>Together, We Can Make a Difference</h1>
                 <p className='text-xl'>Join our community of compassionate individuals working together to create real change. Whether you’re raising funds <br /> for a cause or contributing to one, every action makes an impact. Start a campaign or donate today and <br /> be part of something bigger—help us bring hope and support to those who need it most.</p>
             </div>
@@ -46,8 +46,8 @@ const Home = () => {
             </section>
 
             {/* running campaign section start */}
-            <section className='my-18 space-y-10'>
-                <div className='space-y-5'>
+            <section className='my-18 space-y-10 '>
+                <div className='space-y-5 text-center'>
                     <h1 className='text-3xl font-semibold text-green-600'>Running Campaign</h1>
                     <p className='text-xl'>In our Running Campaigns section, you can explore all the active and ongoing campaigns. These campaigns focus on various social, educational, health, and developmental projects, all aiming to bring positive change. By donating, you can contribute to these causes and be a part of making a difference. Our goal is to work together for the betterment of society, and with your support, we can achieve this vision. Join us in creating a lasting impact through your generous contributions.</p>
                 </div>
