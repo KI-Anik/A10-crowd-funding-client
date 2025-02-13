@@ -41,7 +41,7 @@ const Update = () => {
         })
             .then(res => res.json())
             .then(data => {
-                
+
                 if (data.modifiedCount) { // Ensure the property name matches the server response
                     Swal.fire({
                         title: "Success!",
@@ -79,7 +79,8 @@ const Update = () => {
                     delaySpeed={1000}
                 ></Typewriter>
             </h2>
-            <form onSubmit={handleSubmit}>
+            <form className=" bg-white dark:bg-gray-800
+    text-black dark:text-white" onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700" htmlFor="title">
                         Campaign Title

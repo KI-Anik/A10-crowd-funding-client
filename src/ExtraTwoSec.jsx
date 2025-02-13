@@ -18,9 +18,9 @@ const ExtraTwoSec = () => {
             <Swiper
                 slidesPerView={3}
                 spaceBetween={30}
-                pagination={{clickable: true}}
-                navigation={true} 
-                autoplay={{ delay: 3000, disableOnInteraction: false }} 
+                pagination={{ clickable: true }}
+                navigation={true}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
                 modules={[Navigation, Pagination, Autoplay]}
                 className=""
             >
@@ -70,19 +70,19 @@ const ExtraTwoSec = () => {
 
             <section className='space-y-6 bg-slate-300 p-12 text-center'>
                 <h2 className="text-5xl text-sky-600 font-bold  my-14">Frequently Asked Questions</h2>
-            <Fade direction='up'>
-                <div className="collapse collapse-arrow bg-base-200">
-                    <input type="radio" name="my-accordion-2" defaultChecked />
-                    <div className="collapse-title text-xl font-medium">What is Crowd Fund</div>
-                    <div className="collapse-content">
-                        <p>
-                            Crowdfunding is a way to raise money from a group of people, or &rdquo;the crowd&rdquo;, for a variety of purposes. It can be used to finance a business, raise money for a cause, or help someone in need.
-                            No long wait periods for receiving funds
-                            Taking the fear out of asking for financial help
-                            Reaching people outside of your network</p>
+                <Fade direction='up'>
+                    <div className="collapse collapse-arrow bg-base-200">
+                        <input type="radio" name="my-accordion-2" defaultChecked />
+                        <div className="collapse-title text-xl font-medium">What is Crowd Fund</div>
+                        <div className="collapse-content">
+                            <p>
+                                Crowdfunding is a way to raise money from a group of people, or &rdquo;the crowd&rdquo;, for a variety of purposes. It can be used to finance a business, raise money for a cause, or help someone in need.
+                                No long wait periods for receiving funds
+                                Taking the fear out of asking for financial help
+                                Reaching people outside of your network</p>
+                        </div>
                     </div>
-                </div>
-            </Fade>
+                </Fade>
 
                 <div className="collapse collapse-arrow bg-base-200">
                     <input type="radio" name="my-accordion-2" />
@@ -94,13 +94,13 @@ const ExtraTwoSec = () => {
                     </div>
                 </div>
                 <Fade direction='up'>
-                <div className="collapse collapse-arrow bg-base-200">
-                    <input type="radio" name="my-accordion-2" />
-                    <div className="collapse-title text-xl font-medium">How will i know how my donation is being utilized?</div>
-                    <div className="collapse-content">
-                        <p>We will be sending you regular updates in the form of e-mails, digital communication, etc., of the progress that has been made and keep you updated about Crowd Fund&apos;s work, in the region, and around the world.</p>
+                    <div className="collapse collapse-arrow bg-base-200">
+                        <input type="radio" name="my-accordion-2" />
+                        <div className="collapse-title text-xl font-medium">How will i know how my donation is being utilized?</div>
+                        <div className="collapse-content">
+                            <p>We will be sending you regular updates in the form of e-mails, digital communication, etc., of the progress that has been made and keep you updated about Crowd Fund&apos;s work, in the region, and around the world.</p>
+                        </div>
                     </div>
-                </div>
                 </Fade>
             </section>
 

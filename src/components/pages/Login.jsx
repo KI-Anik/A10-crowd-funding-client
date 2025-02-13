@@ -19,7 +19,7 @@ const Login = () => {
         login(email, password)
             .then(result => {
                 setUser(result.user)
-                toast.success(`welcome ${ result.user?.displayName? result.user.displayName : ''} to Crowd Funding`)
+                toast.success(`welcome ${result.user?.displayName ? result.user.displayName : ''} to Crowd Funding`)
                 navigate(location?.state ? location.state : '/')
             })
             .catch(err => {
@@ -31,7 +31,7 @@ const Login = () => {
         loginWithGoogle()
             .then(result => {
                 setUser(result.user)
-                toast.success(`welcome ${ result.user?.displayName? result.user.displayName : ''} to Crowd Funding`)
+                toast.success(`welcome ${result.user?.displayName ? result.user.displayName : ''} to Crowd Funding`)
                 navigate(location?.state ? location.state : '/')
             })
             .catch(err => {
@@ -48,10 +48,10 @@ const Login = () => {
                     </p>
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl card-body">
-                        <button onClick={handleGoogle} className="btn"> <FaGoogle></FaGoogle> Contionue with Google</button>
-                        <div className="text-xl font-bold text-center">
-                            Or
-                        </div>
+                    <button onClick={handleGoogle} className="btn"> <FaGoogle></FaGoogle> Contionue with Google</button>
+                    <div className="text-xl font-bold text-center">
+                        Or
+                    </div>
                     <form onSubmit={handleLogin}>
                         <div className="form-control">
                             <label className="label">

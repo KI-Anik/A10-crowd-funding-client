@@ -1,43 +1,38 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-li > a {
-    font-weight: 500;
-    font-size: medium;
-    
+li>a {
+  font-weight: 500;
+  font-size: medium;
+
 }
-.active{
-    background-color: rgb(28, 134, 90);
-    color: white;
-    font-weight: 700;
+
+.active {
+  background-color: rgb(28, 134, 90);
+  color: white;
+  font-weight: 700;
 }
 
 /* banner css start  */
 .swiper {
-    background: transparent !important;
-  }
-  
-  .swiper-slide {
-    @apply bg-white dark:bg-gray-800
-    text-black dark:text-white;
+  background: transparent !important;
+}
 
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-  
-    /* Center slide text vertically */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 80px;
-  }
-  
-  .swiper-slide img {
-    width: 100vw;
-    height: 60vh;
-  }
+.swiper-slide {
+  @apply bg-white dark:bg-gray-800 text-black dark:text-white;
 
-  form{
-    @apply bg-white dark:bg-gray-800
-    text-black dark:text-white;
-  }
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.swiper-slide img {
+  width: 100vw;
+  height: 60vh;
+}

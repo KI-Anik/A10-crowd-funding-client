@@ -75,7 +75,9 @@ const Router = createBrowserRouter([
       },
       {
         path: '/auth/updateCamp/:id',
-        element:<Update></Update>,
+        element: <PrivateRouter>
+          <Update></Update>
+        </PrivateRouter>,
         loader: ({ params }) => fetch(`https://a10-crowd-funding.vercel.app/campaigns/${params.id}`),
       }
     ]
