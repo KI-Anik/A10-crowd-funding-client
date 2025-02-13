@@ -36,3 +36,9 @@ li>a {
   width: 100vw;
   height: 60vh;
 }
+
+/* For Webkit browsers (Chrome, Safari) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+

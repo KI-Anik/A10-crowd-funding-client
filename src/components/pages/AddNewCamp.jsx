@@ -66,7 +66,8 @@ const AddCampaign = () => {
     return (
         <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md ">
             <h2 className="text-2xl font-bold mb-6 text-cyan-500 ">Create a New Campaign</h2>
-            <form onSubmit={handleSubmit}>
+            <form className=" bg-white dark:bg-gray-800
+    text-black dark:text-white" onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label className="block text-sm font-medium text-gray-700" htmlFor="title">
                         Campaign Title
